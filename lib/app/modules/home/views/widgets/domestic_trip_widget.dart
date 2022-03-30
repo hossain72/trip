@@ -72,25 +72,29 @@ class _DomesticTripWidgetState extends State<DomesticTripWidget> {
                               Positioned(
                                   bottom: -20,
                                   right: 10,
-                                  child: Container(
-                                    height: 45,
-                                    width: 50,
-                                    decoration: BoxDecoration(
-                                        color: Colors.deepOrangeAccent,
-                                        borderRadius: BorderRadius.circular(50),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.deepOrangeAccent
-                                                .withOpacity(0.3),
-                                            spreadRadius: 5,
-                                            blurRadius: 12,
-                                            offset: const Offset(0,
-                                                3), // changes position of shadow
-                                          ),
-                                        ]),
-                                    child: const Icon(
-                                      Icons.arrow_forward_outlined,
-                                      color: Colors.white,
+                                  child: InkWell(
+                                    onTap: () => Get.toNamed("/trip-details", arguments: item),
+                                    child: Container(
+                                      height: 45,
+                                      width: 50,
+                                      decoration: BoxDecoration(
+                                          color: Colors.deepOrangeAccent,
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.deepOrangeAccent
+                                                  .withOpacity(0.3),
+                                              spreadRadius: 5,
+                                              blurRadius: 12,
+                                              offset: const Offset(0,
+                                                  3), // changes position of shadow
+                                            ),
+                                          ]),
+                                      child: const Icon(
+                                        Icons.arrow_forward_outlined,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   ))
                             ],

@@ -14,6 +14,7 @@ class AbroadTripWidget extends StatefulWidget {
 
 class _AbroadTripWidgetState extends State<AbroadTripWidget> {
   final controller = Get.put(HomeController());
+
   @override
   Widget build(BuildContext context) {
     final width = Get.width;
@@ -25,8 +26,7 @@ class _AbroadTripWidgetState extends State<AbroadTripWidget> {
           children: const [
             Text(
               "Domestic trips",
-              style:
-              TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
             ),
             Text(
               "See All",
@@ -63,38 +63,39 @@ class _AbroadTripWidgetState extends State<AbroadTripWidget> {
                               Container(
                                 height: 170,
                                 decoration: BoxDecoration(
-                                    borderRadius:
-                                    BorderRadius.circular(15),
+                                    borderRadius: BorderRadius.circular(15),
                                     image: DecorationImage(
-                                        image: AssetImage(item
-                                            .imageList!.first
-                                            .toString()),
+                                        image: AssetImage(
+                                            item.imageList!.first.toString()),
                                         fit: BoxFit.fill)),
                               ),
                               Positioned(
                                   bottom: -20,
                                   right: 10,
-                                  child: Container(
-                                    height: 45,
-                                    width: 50,
-                                    decoration: BoxDecoration(
-                                        color: Colors.deepOrangeAccent,
-                                        borderRadius:
-                                        BorderRadius.circular(50),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors
-                                                .deepOrangeAccent
-                                                .withOpacity(0.3),
-                                            spreadRadius: 5,
-                                            blurRadius: 12,
-                                            offset: const Offset(0,
-                                                3), // changes position of shadow
-                                          ),
-                                        ]),
-                                    child: const Icon(
-                                      Icons.arrow_forward_outlined,
-                                      color: Colors.white,
+                                  child: InkWell(
+                                    onTap: () => Get.toNamed("/trip-details",
+                                        arguments: item),
+                                    child: Container(
+                                      height: 45,
+                                      width: 50,
+                                      decoration: BoxDecoration(
+                                          color: Colors.deepOrangeAccent,
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.deepOrangeAccent
+                                                  .withOpacity(0.3),
+                                              spreadRadius: 5,
+                                              blurRadius: 12,
+                                              offset: const Offset(0,
+                                                  3), // changes position of shadow
+                                            ),
+                                          ]),
+                                      child: const Icon(
+                                        Icons.arrow_forward_outlined,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   ))
                             ],
@@ -105,8 +106,7 @@ class _AbroadTripWidgetState extends State<AbroadTripWidget> {
                           Text(
                             item.tripName.toString(),
                             style: const TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold),
+                                fontSize: 22, fontWeight: FontWeight.bold),
                           ),
                           Text(
                             item.tripAddress.toString(),
@@ -119,8 +119,7 @@ class _AbroadTripWidgetState extends State<AbroadTripWidget> {
                             height: 15,
                           ),
                           Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
                                 children: [
@@ -148,15 +147,14 @@ class _AbroadTripWidgetState extends State<AbroadTripWidget> {
                                         fontWeight: FontWeight.w700,
                                         color: Colors.blueAccent),
                                     children: [
-                                      TextSpan(text: "/ ${item.totalDays} days",
+                                      TextSpan(
+                                        text: "/ ${item.totalDays} days",
                                         style: TextStyle(
                                           fontSize: 16,
-                                          fontWeight:
-                                          FontWeight.w600,
-                                          color: Colors
-                                              .grey
-                                              .shade700,
-                                        ),)
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.grey.shade700,
+                                        ),
+                                      )
                                     ]),
                               )
                             ],
@@ -172,4 +170,3 @@ class _AbroadTripWidgetState extends State<AbroadTripWidget> {
     );
   }
 }
-
