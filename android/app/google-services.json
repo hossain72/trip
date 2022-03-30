@@ -1,0 +1,134 @@
+{
+  "project_info": {
+    "project_number": "253783105256",
+    "project_id": "flutter-5ab07",
+    "storage_bucket": "flutter-5ab07.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253783105256:android:4dce5b6855d4fb1486335d",
+        "android_client_info": {
+          "package_name": "com.example.bmi_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253783105256-tuh00r79c107n8hu8v8ou524ll5h9hra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfBjhy3aY4lLt5zTZtCyrr53C_RsirXL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253783105256-tuh00r79c107n8hu8v8ou524ll5h9hra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253783105256:android:c486360bdd0c22db86335d",
+        "android_client_info": {
+          "package_name": "com.example.flutter_push_notification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253783105256-tuh00r79c107n8hu8v8ou524ll5h9hra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfBjhy3aY4lLt5zTZtCyrr53C_RsirXL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253783105256-tuh00r79c107n8hu8v8ou524ll5h9hra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253783105256:android:b585d1ca2fee632086335d",
+        "android_client_info": {
+          "package_name": "com.example.food_app_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253783105256-tuh00r79c107n8hu8v8ou524ll5h9hra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfBjhy3aY4lLt5zTZtCyrr53C_RsirXL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253783105256-tuh00r79c107n8hu8v8ou524ll5h9hra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253783105256:android:9cf368823f5c26cc86335d",
+        "android_client_info": {
+          "package_name": "com.example.trip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253783105256-o1t3b7knb7kmae85le5c46fo5iks34mv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trip",
+            "certificate_hash": "82298f1bf89dc2ee2362187a8682fdb5ed3dc9af"
+          }
+        },
+        {
+          "client_id": "253783105256-tuh00r79c107n8hu8v8ou524ll5h9hra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfBjhy3aY4lLt5zTZtCyrr53C_RsirXL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253783105256-tuh00r79c107n8hu8v8ou524ll5h9hra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
