@@ -2,6 +2,7 @@ class Trip {
   List<String>? imageList;
   String? tripName;
   String? tripAddress;
+  int? totalDays;
   DateTime? startDate;
   DateTime? endDate;
   int? price;
@@ -12,6 +13,7 @@ class Trip {
       {this.imageList,
       this.tripName,
       this.tripAddress,
+      this.totalDays,
       this.startDate,
       this.endDate,
       this.price,
