@@ -37,19 +37,13 @@ class BookingTripView extends GetView<BookingTripController> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
-            child: ListView.builder(
+            child: Obx(()=>ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: controller.bookedTripList.length,
                 itemBuilder: (_, index) {
-                  var trip;
-                  if(controller.bookedTripList[index].runtimeType.toString() != "Trip"){
-                    trip = Trip.fromJson(controller.bookedTripList[index]);
-                  }else {
-                    trip = controller.bookedTripList[index] as Trip;
-                  }
-                   print(trip.runtimeType);
-                   print(controller.bookedTripList[index].runtimeType);
+                  var trip =controller.bookedTripList[index];
+                  print(controller.bookedTripList);
                   return SizedBox(
                     height: 120,
                     width: width,
@@ -67,7 +61,7 @@ class BookingTripView extends GetView<BookingTripController> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(15),
                                     image: DecorationImage(
-                                        image: AssetImage(
+                                        image: NetworkImage(
                                             trip.imageList![0]),
                                         fit: BoxFit.fill)),
                               ),
@@ -111,7 +105,7 @@ class BookingTripView extends GetView<BookingTripController> {
                                             Text(
                                               dateFormat.format(trip.startDate!),
                                               style: TextStyle(
-                                                fontSize: 14,
+                                                  fontSize: 14,
                                                   color: Colors.grey.shade600,
                                                   fontWeight: FontWeight.w600),
                                             )
@@ -181,7 +175,7 @@ class BookingTripView extends GetView<BookingTripController> {
                       ),
                     ),
                   );
-                }),
+                })),
           ),
         ),
       ),

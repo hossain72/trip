@@ -49,7 +49,7 @@ class _CarouselSliderImageState extends State<CarouselSliderImage> {
                       width: width,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(6.0),
-                        child: Image.asset(item, fit: BoxFit.fill,),
+                        child: Image.network(item, fit: BoxFit.fill,),
                       ),
                     ),
                   ],

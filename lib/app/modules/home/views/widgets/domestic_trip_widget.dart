@@ -25,7 +25,7 @@ class _DomesticTripWidgetState extends State<DomesticTripWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const [
             Text(
-              "Abroad trips",
+              "Domestic trips",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
             ),
             Text(
@@ -42,9 +42,9 @@ class _DomesticTripWidgetState extends State<DomesticTripWidget> {
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
               padding: EdgeInsets.zero,
-              itemCount: controller.abroadTrips.length,
+              itemCount: controller.domesticTrips.length,
               itemBuilder: (_, index) {
-                var item = controller.abroadTrips[index];
+                var item = controller.domesticTrips[index];
                 return Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
@@ -65,7 +65,7 @@ class _DomesticTripWidgetState extends State<DomesticTripWidget> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(15),
                                     image: DecorationImage(
-                                        image: AssetImage(
+                                        image: NetworkImage(
                                             item.imageList!.first.toString()),
                                         fit: BoxFit.fill)),
                               ),

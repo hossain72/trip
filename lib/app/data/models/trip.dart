@@ -4,12 +4,15 @@
 
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 Trip tripFromJson(String str) => Trip.fromJson(json.decode(str));
 
 String tripToJson(Trip data) => json.encode(data.toJson());
 
 class Trip {
   Trip({
+    this.id,
     this.imageList,
     this.tripName,
     this.tripAddress,
@@ -22,7 +25,8 @@ class Trip {
     this.program,
   });
 
-  List<String>? imageList;
+  String? id;
+  List<dynamic>? imageList;
   String? tripName;
   String? tripAddress;
   int? totalDays;
@@ -31,33 +35,52 @@ class Trip {
   int? price;
   String? tripDetails;
   bool? isBooked;
-  List<Program>? program;
+  List<dynamic>? program;
 
-  factory Trip.fromJson(Map<String, dynamic> json) => Trip(
-    imageList: List<String>.from(json["imageList"].map((x) => x)),
-    tripName: json["tripName"],
-    tripAddress: json["tripAddress"],
-    totalDays: json["totalDays"],
-    startDate: DateTime.parse(json["startDate"]),
-    endDate: DateTime.parse(json["endDate"]),
-    price: json["price"],
-    tripDetails: json["tripDetails"],
-    isBooked: json["isBooked"],
-    program: List<Program>.from(json["program"].map((x) => Program.fromJson(x))),
-  );
+  Trip.fromMap(DocumentSnapshot data) {
+    id = data["id"];
+    imageList = data["imageList"];
+    tripName = data["tripName"];
+    tripAddress = data["tripAddress"];
+    totalDays = data["totalDays"];
+    startDate = DateTime.parse(data["startDate"]);
+    endDate = DateTime.parse(data["endDate"]);
+    price = data["price"];
+    tripDetails = data["tripDetails"];
+    isBooked = data["isBooked"];
+    program = data["program"];
+  }
 
-  Map<String, dynamic> toJson() => {
-    "imageList": List<String>.from(imageList!.map((x) => x)),
-    "tripName": tripName,
-    "tripAddress": tripAddress,
-    "totalDays": totalDays,
-    "startDate": startDate!.toIso8601String(),
-    "endDate": endDate!.toIso8601String(),
-    "price": price,
-    "tripDetails": tripDetails,
-    "isBooked": isBooked,
-    "program": List<dynamic>.from(program!.map((x) => x.toJson())),
-  };
+  factory Trip.fromJson(Map<String, dynamic> json) =>
+      Trip(
+        id: json["id"],
+        imageList: List<String>.from(json["imageList"].map((x) => x)),
+        tripName: json["tripName"],
+        tripAddress: json["tripAddress"],
+        totalDays: json["totalDays"],
+        startDate: DateTime.parse(json["startDate"]),
+        endDate: DateTime.parse(json["endDate"]),
+        price: json["price"],
+        tripDetails: json["tripDetails"],
+        isBooked: json["isBooked"],
+        program:
+        List<Program>.from(json["program"].map((x) => Program.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() =>
+      {
+        "id": id,
+        "imageList": List<String>.from(imageList!.map((x) => x)),
+        "tripName": tripName,
+        "tripAddress": tripAddress,
+        "totalDays": totalDays,
+        "startDate": startDate!.toIso8601String(),
+        "endDate": endDate!.toIso8601String(),
+        "price": price,
+        "tripDetails": tripDetails,
+        "isBooked": isBooked,
+        "program": List<dynamic>.from(program!.map((x) => x)),
+      };
 }
 
 class Program {
@@ -77,21 +100,32 @@ class Program {
   DateTime? programEndTime;
   String? programDetails;
 
-  factory Program.fromJson(Map<String, dynamic> json) => Program(
-    programDay: json["programDay"],
-    image: json["image"],
-    programDate: DateTime.parse(json["programDate"]),
-    programStartTime: DateTime.parse(json["programStartTime"]),
-    programEndTime: DateTime.parse(json["programEndTime"]),
-    programDetails: json["programDetails"],
-  );
+  Program.fromMap(DocumentSnapshot data) {
+    programDay = data["programDay"];
+    image = data["image"];
+    programDate = (data["programDate"] as Timestamp).toDate();
+    programStartTime = (data["programStartTime"] as Timestamp).toDate();
+    programEndTime = (data["programEndTime"] as Timestamp).toDate();
+    programDetails = data["programDetails"];
+  }
 
-  Map<String, dynamic> toJson() => {
-    "programDay": programDay,
-    "image": image,
-    "programDate": programDate!.toIso8601String(),
-    "programStartTime": programStartTime!.toIso8601String(),
-    "programEndTime": programEndTime!.toIso8601String(),
-    "programDetails": programDetails,
-  };
+  factory Program.fromJson(Map<String, dynamic> json) =>
+      Program(
+        programDay: json["programDay"],
+        image: json["image"],
+        programDate: DateTime.parse(json["programDate"]),
+        programStartTime: DateTime.parse(json["programStartTime"]),
+        programEndTime: DateTime.parse(json["programEndTime"]),
+        programDetails: json["programDetails"],
+      );
+
+  Map<String, dynamic> toJson() =>
+      {
+        "programDay": programDay,
+        "image": image,
+        "programDate": programDate!.toIso8601String(),
+        "programStartTime": programStartTime!.toIso8601String(),
+        "programEndTime": programEndTime!.toIso8601String(),
+        "programDetails": programDetails,
+      };
 }

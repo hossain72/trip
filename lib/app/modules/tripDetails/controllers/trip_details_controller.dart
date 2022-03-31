@@ -1,8 +1,6 @@
-
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 import '../../../data/models/trip.dart';
 
@@ -11,15 +9,18 @@ class TripDetailsController extends GetxController {
   late final pageController = PageController();
   late final isBooking = false.obs;
   late List<dynamic> bookedTripList = [];
-  late final localStorage = GetStorage();
+  late final bookedTripId = "".obs;
+
+  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+  late CollectionReference bookedTripRef;
 
   @override
   void onInit() {
     super.onInit();
+    bookedTripRef = firebaseFirestore.collection("booked_trip");
     trip.value = Get.arguments;
     isBooking.value = trip.value.isBooked!;
-    bookedTripList = localStorage.read("bookingTrip") ?? [];
-    print(bookedTripList.runtimeType);
     update();
   }
 
@@ -30,23 +31,21 @@ class TripDetailsController extends GetxController {
     if (isBooking.value == true) {
       addBookedTrip();
     } else {
-      cancelBookedTrip();
+      cancelBookedTrip(trip.value.id.toString());
     }
   }
 
   addBookedTrip() {
-    //print(bookedTripList.runtimeType);
+    bookedTripId.value = bookedTripRef.doc().id;
+    trip.value.id = bookedTripId.value;
     bookedTripList.add(trip.value);
-    localStorage.write("bookingTrip", bookedTripList);
-    //print(localStorage.read("bookingTrip").runtimeType);
-    print(bookedTripList.runtimeType);
+    bookedTripRef.doc(bookedTripId.value).set(trip.value.toJson());
     update();
   }
 
-  cancelBookedTrip() {
+  cancelBookedTrip(String id) {
     bookedTripList.remove(trip.value);
-    localStorage.write("bookingTrip", bookedTripList);
-    print(bookedTripList.length);
+    bookedTripRef.doc(id).delete();
     update();
   }
 }

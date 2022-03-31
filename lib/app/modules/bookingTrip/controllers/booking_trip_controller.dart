@@ -1,19 +1,24 @@
-import 'dart:convert';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 import '../../../data/models/trip.dart';
 
 class BookingTripController extends GetxController {
-  late List bookedTripList = [];
-  late final localStorage = GetStorage();
+  late final bookedTripList = [].obs;
+
+  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+  late CollectionReference bookedTripRef;
+
   @override
   void onInit() {
     super.onInit();
-    //print(localStorage.read("bookingTrip"));
-    print(localStorage.read("bookingTrip").runtimeType);
-    bookedTripList = localStorage.read("bookingTrip") ?? [];
+    bookedTripRef = firebaseFirestore.collection("booked_trip");
+    bookedTripList.bindStream(getBookedTrips());
     update();
   }
+
+  Stream<List<Trip>> getBookedTrips() => bookedTripRef
+      .snapshots()
+      .map((query) => query.docs.map((item) => Trip.fromMap(item)).toList());
+
 }

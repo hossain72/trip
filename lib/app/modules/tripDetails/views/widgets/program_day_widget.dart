@@ -34,7 +34,8 @@ class _ProgramDayWidgetState extends State<ProgramDayWidget> {
               pageSnapping: false,
               itemCount: controller.trip.value.program!.length,
               itemBuilder: (BuildContext context, int index) {
-                var program = controller.trip.value.program![index];
+                print(controller.trip.value.program![index].runtimeType);
+                var program = Program.fromJson(controller.trip.value.program![index]);
                 return Column(
                   children: [
                     Row(
@@ -71,7 +72,7 @@ class _ProgramDayWidgetState extends State<ProgramDayWidget> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           image: DecorationImage(
-                              image: AssetImage(program.image.toString()),
+                              image: NetworkImage(program.image.toString()),
                               fit: BoxFit.fill)),
                     ),
                     const SizedBox(
