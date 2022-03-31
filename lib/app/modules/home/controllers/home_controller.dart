@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../../../data/models/trip.dart';
 
 class HomeController extends GetxController {
-  final domesticTrips = <Trip>[
+  late final domesticTrips = <Trip>[
     Trip(
         imageList: [
           'assets/images/jpg/cox_bazar.jpg',
@@ -19,9 +20,11 @@ class HomeController extends GetxController {
         tripDetails: "Coxs bazar beach is known for its serenity. "
             "During the sunrise & the sunset, you can easily lost with nature.It is not only famous for its long natural sandy sea beach, but it is also famous for the amazing hospitality, fresh seafood, marine drive, kutubdia, Moheshkhali Island, and amazing St. Martin's Island. "
             "Mainly Cox's Bazar is famous for its longest natural sandy beach in the world.",
+        isBooked: false,
         program: [
           Program(
               programDay: "1",
+              image: "assets/images/jpg/cox_bazar1.jpg",
               programDate: DateTime.parse("2022-04-06T05:33:17.775Z"),
               programStartTime: DateTime.parse("2022-04-06T05:33:17.775Z"),
               programEndTime: DateTime.parse("2022-04-06T10:33:17.775Z"),
@@ -30,6 +33,7 @@ class HomeController extends GetxController {
                   "Mainly Cox's Bazar is famous for its longest natural sandy beach in the world."),
           Program(
               programDay: "2",
+              image: "assets/images/jpg/cox_bazar2.jpg",
               programDate: DateTime.parse("2022-04-08T05:33:17.775Z"),
               programStartTime: DateTime.parse("2022-04-08T07:33:17.775Z"),
               programEndTime: DateTime.parse("2022-04-08T12:33:17.775Z"),
@@ -38,6 +42,7 @@ class HomeController extends GetxController {
                   "Mainly Cox's Bazar is famous for its longest natural sandy beach in the world."),
           Program(
               programDay: "2",
+              image: "assets/images/jpg/cox_bazar3.jpg",
               programDate: DateTime.parse("2022-04-10T05:33:17.775Z"),
               programStartTime: DateTime.parse("2022-04-10T06:33:17.775Z"),
               programEndTime: DateTime.parse("2022-04-10T11:33:17.775Z"),
@@ -60,9 +65,11 @@ class HomeController extends GetxController {
         tripDetails: "Coxs bazar beach is known for its serenity. "
             "During the sunrise & the sunset, you can easily lost with nature.It is not only famous for its long natural sandy sea beach, but it is also famous for the amazing hospitality, fresh seafood, marine drive, kutubdia, Moheshkhali Island, and amazing St. Martin's Island. "
             "Mainly Cox's Bazar is famous for its longest natural sandy beach in the world.",
+        isBooked: false,
         program: [
           Program(
               programDay: "1",
+              image: "assets/images/jpg/cox_bazar1.jpg",
               programDate: DateTime.parse("2022-04-06T05:33:17.775Z"),
               programStartTime: DateTime.parse("2022-04-06T05:33:17.775Z"),
               programEndTime: DateTime.parse("2022-04-06T10:33:17.775Z"),
@@ -71,6 +78,7 @@ class HomeController extends GetxController {
                   "Mainly Cox's Bazar is famous for its longest natural sandy beach in the world."),
           Program(
               programDay: "2",
+              image: "assets/images/jpg/cox_bazar2.jpg",
               programDate: DateTime.parse("2022-04-08T05:33:17.775Z"),
               programStartTime: DateTime.parse("2022-04-08T07:33:17.775Z"),
               programEndTime: DateTime.parse("2022-04-08T12:33:17.775Z"),
@@ -79,6 +87,7 @@ class HomeController extends GetxController {
                   "Mainly Cox's Bazar is famous for its longest natural sandy beach in the world."),
           Program(
               programDay: "2",
+              image: "assets/images/jpg/cox_bazar3.jpg",
               programDate: DateTime.parse("2022-04-10T05:33:17.775Z"),
               programStartTime: DateTime.parse("2022-04-10T06:33:17.775Z"),
               programEndTime: DateTime.parse("2022-04-10T11:33:17.775Z"),
@@ -88,7 +97,7 @@ class HomeController extends GetxController {
         ]),
   ];
 
-  final abroadTrips = <Trip>[
+  late final abroadTrips = <Trip>[
     Trip(
         imageList: [
           'assets/images/jpg/cox_bazar.jpg',
@@ -104,9 +113,11 @@ class HomeController extends GetxController {
         tripDetails: "Coxs bazar beach is known for its serenity. "
             "During the sunrise & the sunset, you can easily lost with nature.It is not only famous for its long natural sandy sea beach, but it is also famous for the amazing hospitality, fresh seafood, marine drive, kutubdia, Moheshkhali Island, and amazing St. Martin's Island. "
             "Mainly Cox's Bazar is famous for its longest natural sandy beach in the world.",
+        isBooked: false,
         program: [
           Program(
               programDay: "1",
+              image: "assets/images/jpg/cox_bazar1.jpg",
               programDate: DateTime.parse("2022-04-06T00:00:00.000Z"),
               programStartTime: DateTime.parse("2022-04-06T09:00:00.000Z"),
               programEndTime: DateTime.parse("2022-04-06T14:00:00.000Z"),
@@ -115,6 +126,7 @@ class HomeController extends GetxController {
                   "Mainly Cox's Bazar is famous for its longest natural sandy beach in the world."),
           Program(
               programDay: "2",
+              image: "assets/images/jpg/cox_bazar2.jpg",
               programDate: DateTime.parse("2022-04-08T00:00:00.000Z"),
               programStartTime: DateTime.parse("2022-04-08T08:30:00.000Z"),
               programEndTime: DateTime.parse("2022-04-08T15:00:00.000Z"),
@@ -123,6 +135,7 @@ class HomeController extends GetxController {
                   "Mainly Cox's Bazar is famous for its longest natural sandy beach in the world."),
           Program(
               programDay: "2",
+              image: "assets/images/jpg/cox_bazar3.jpg",
               programDate: DateTime.parse("2022-04-10T00:00:00.000Z"),
               programStartTime: DateTime.parse("2022-04-10T10:00:00.000Z"),
               programEndTime: DateTime.parse("2022-04-10T13:00:00.000Z"),
@@ -145,9 +158,11 @@ class HomeController extends GetxController {
         tripDetails: "Coxs bazar beach is known for its serenity. "
             "During the sunrise & the sunset, you can easily lost with nature.It is not only famous for its long natural sandy sea beach, but it is also famous for the amazing hospitality, fresh seafood, marine drive, kutubdia, Moheshkhali Island, and amazing St. Martin's Island. "
             "Mainly Cox's Bazar is famous for its longest natural sandy beach in the world.",
+        isBooked: false,
         program: [
           Program(
               programDay: "1",
+              image: "assets/images/jpg/cox_bazar1.jpg",
               programDate: DateTime.parse("2022-04-06T05:33:17.775Z"),
               programStartTime: DateTime.parse("2022-04-06T05:33:17.775Z"),
               programEndTime: DateTime.parse("2022-04-06T10:33:17.775Z"),
@@ -156,6 +171,7 @@ class HomeController extends GetxController {
                   "Mainly Cox's Bazar is famous for its longest natural sandy beach in the world."),
           Program(
               programDay: "2",
+              image: "assets/images/jpg/cox_bazar2.jpg",
               programDate: DateTime.parse("2022-04-08T05:33:17.775Z"),
               programStartTime: DateTime.parse("2022-04-08T07:33:17.775Z"),
               programEndTime: DateTime.parse("2022-04-08T12:33:17.775Z"),
@@ -164,6 +180,7 @@ class HomeController extends GetxController {
                   "Mainly Cox's Bazar is famous for its longest natural sandy beach in the world."),
           Program(
               programDay: "2",
+              image: "assets/images/jpg/cox_bazar3.jpg",
               programDate: DateTime.parse("2022-04-10T05:33:17.775Z"),
               programStartTime: DateTime.parse("2022-04-10T06:33:17.775Z"),
               programEndTime: DateTime.parse("2022-04-10T11:33:17.775Z"),
@@ -173,16 +190,13 @@ class HomeController extends GetxController {
         ]),
   ];
 
+  late final localStorage = GetStorage();
+  late final bookedTripList = [].obs;
+
   @override
   void onInit() {
     super.onInit();
+    bookedTripList.value = localStorage.read("bookingTrip") ?? [];
+    update();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
 }

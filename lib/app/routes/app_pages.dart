@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import 'package:trip/app/modules/bookingTrip/bindings/booking_trip_binding.dart';
+import 'package:trip/app/modules/bookingTrip/views/booking_trip_view.dart';
 import 'package:trip/app/modules/home/bindings/home_binding.dart';
 import 'package:trip/app/modules/home/views/home_view.dart';
 import 'package:trip/app/modules/login/bindings/login_binding.dart';
@@ -36,6 +38,11 @@ class AppPages {
       name: _Paths.TRIP_DETAILS,
       page: () => TripDetailsView(),
       binding: TripDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.BOOKING_TRIP,
+      page: () => BookingTripView(),
+      binding: BookingTripBinding(),
     ),
   ];
 }

@@ -24,12 +24,35 @@ class HomeView extends GetView<HomeController> {
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
         ),
         actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.login_outlined,
-                color: Colors.black,
-              ))
+          Stack(
+            alignment: Alignment.topRight,
+            children: [
+              IconButton(
+                  onPressed: ()=>Get.toNamed("/booking-trip"),
+                  icon: const Icon(
+                    Icons.bookmark_outline_outlined,
+                    color: Colors.black,
+                  )),
+              Positioned(
+                  top: 5,
+                  right: 5,
+                  child: Text(
+                    controller.bookedTripList.length.toString(),
+                    style:
+                        const TextStyle(color: Colors.blueAccent, fontSize: 18),
+                  ))
+            ],
+          ),
+          Stack(
+            children: [
+              IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.login_outlined,
+                    color: Colors.black,
+                  )),
+            ],
+          ),
         ],
       ),
       body: Container(
@@ -49,7 +72,10 @@ class HomeView extends GetView<HomeController> {
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                         hintText: "Search by destination or area",
-                        prefixIcon: Icon(Icons.search_outlined, color: Colors.blueAccent.shade400,),
+                        prefixIcon: Icon(
+                          Icons.search_outlined,
+                          color: Colors.blueAccent.shade400,
+                        ),
                         hintStyle: const TextStyle(
                             fontSize: 14.0,
                             fontWeight: FontWeight.normal,
@@ -75,7 +101,8 @@ class HomeView extends GetView<HomeController> {
                         children: [
                           Text(
                             item.toString(),
-                            style: const TextStyle(color: Colors.black, fontSize: 16),
+                            style: const TextStyle(
+                                color: Colors.black, fontSize: 16),
                           )
                         ],
                       ),

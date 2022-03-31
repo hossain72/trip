@@ -12,6 +12,7 @@ dependencies:
   flutter_typeahead: ^3.2.4
   carousel_slider: ^4.0.0
   jiffy: ^5.0.0
+  get_storage: ^2.0.3
   flutter: 
     sdk: flutter
 
