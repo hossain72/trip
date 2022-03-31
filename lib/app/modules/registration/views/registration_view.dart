@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 
+import '../controllers/auth_controller.dart';
 import '../controllers/registration_controller.dart';
 
 class RegistrationView extends GetView<RegistrationController> {
@@ -40,6 +41,7 @@ class RegistrationView extends GetView<RegistrationController> {
                   height: 20,
                 ),
                 Form(
+                  key: _formKey,
                     child: Column(
                   children: [
                     Column(
@@ -224,7 +226,16 @@ class RegistrationView extends GetView<RegistrationController> {
                 ),
                 TextButton(
                   onPressed: () async {
-                    if (_formKey.currentState!.validate()) {}
+                    if (_formKey.currentState!.validate()) {
+                      String email = controller.emailController.text.trim();
+                      String password =
+                      controller.passwordController.text.trim();
+                      String confirmPassword =
+                      controller.confirmPasswordController.text.trim();
+                      if (password == confirmPassword) {
+                        AuthController.instance.register(email, password);
+                      }
+                    }
                   },
                   style: TextButton.styleFrom(
                       primary: Colors.white,

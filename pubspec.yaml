@@ -13,6 +13,8 @@ dependencies:
   carousel_slider: ^4.0.0
   jiffy: ^5.0.0
   get_storage: ^2.0.3
+  firebase_auth: ^3.3.11
+  firebase_core: ^1.13.1
   flutter: 
     sdk: flutter
 

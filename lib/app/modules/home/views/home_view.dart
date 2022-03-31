@@ -8,6 +8,8 @@ import 'widgets/domestic_trip_widget.dart';
 
 import '../controllers/home_controller.dart';
 
+import '../../registration/controllers/auth_controller.dart';
+
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
 
@@ -28,7 +30,7 @@ class HomeView extends GetView<HomeController> {
             alignment: Alignment.topRight,
             children: [
               IconButton(
-                  onPressed: ()=>Get.toNamed("/booking-trip"),
+                  onPressed: () => Get.toNamed("/booking-trip"),
                   icon: const Icon(
                     Icons.bookmark_outline_outlined,
                     color: Colors.black,
@@ -46,7 +48,7 @@ class HomeView extends GetView<HomeController> {
           Stack(
             children: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: () => AuthController.instance.logout(),
                   icon: const Icon(
                     Icons.login_outlined,
                     color: Colors.black,
