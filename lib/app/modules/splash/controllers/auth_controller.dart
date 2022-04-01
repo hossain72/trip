@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,15 +7,16 @@ class AuthController extends GetxController {
 
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
-
-  late Rx<User?> _user;
+  late final Rx<User?> _user;
 
   @override
   void onReady() {
     super.onReady();
-    _user = Rx<User?>(firebaseAuth.currentUser);
-    _user.bindStream(firebaseAuth.userChanges());
-    ever(_user, _initScreen);
+    Future.delayed(const Duration(seconds: 3), () {
+      _user = Rx<User?>(firebaseAuth.currentUser);
+      _user.bindStream(firebaseAuth.userChanges());
+      ever(_user, _initScreen);
+    });
   }
 
   _initScreen(User? user) {

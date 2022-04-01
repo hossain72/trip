@@ -8,6 +8,8 @@ import 'package:trip/app/modules/login/bindings/login_binding.dart';
 import 'package:trip/app/modules/login/views/login_view.dart';
 import 'package:trip/app/modules/registration/bindings/registration_binding.dart';
 import 'package:trip/app/modules/registration/views/registration_view.dart';
+import 'package:trip/app/modules/splash/bindings/splash_binding.dart';
+import 'package:trip/app/modules/splash/views/splash_view.dart';
 import 'package:trip/app/modules/tripDetails/bindings/trip_details_binding.dart';
 import 'package:trip/app/modules/tripDetails/views/trip_details_view.dart';
 
@@ -16,7 +18,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.REGISTRATION;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.BOOKING_TRIP,
       page: () => BookingTripView(),
       binding: BookingTripBinding(),
+    ),
+    GetPage(
+      name: _Paths.SPLASH,
+      page: () => SplashView(),
+      binding: SplashBinding(),
     ),
   ];
 }

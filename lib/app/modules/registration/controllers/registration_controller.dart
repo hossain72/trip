@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trip/app/modules/registration/controllers/auth_controller.dart';
+import 'package:trip/app/modules/splash/controllers/auth_controller.dart';
 
 class RegistrationController extends GetxController {
   final emailController = TextEditingController();
@@ -10,6 +10,7 @@ class RegistrationController extends GetxController {
 
   final hidePassword = true.obs;
   final hideConfirmPassword = true.obs;
+  final isLoading = false.obs;
 
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
@@ -33,6 +34,8 @@ class RegistrationController extends GetxController {
 
   registerUser(String email, String password) async {
     try {
+      isLoading.value = true;
+      update();
       await AuthController.instance.firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password)
           .whenComplete(() {
@@ -46,6 +49,9 @@ class RegistrationController extends GetxController {
         backgroundColor: Colors.redAccent,
         snackPosition: SnackPosition.BOTTOM,
       );
+    }finally{
+    isLoading.value = false;
+    update();
     }
   }
 }

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import 'app/modules/splash/controllers/auth_controller.dart';
 import 'app/routes/app_pages.dart';
-import 'app/modules/registration/controllers/auth_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

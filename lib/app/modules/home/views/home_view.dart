@@ -8,7 +8,7 @@ import 'widgets/domestic_trip_widget.dart';
 
 import '../controllers/home_controller.dart';
 
-import '../../registration/controllers/auth_controller.dart';
+import '../../splash/controllers/auth_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
@@ -26,35 +26,18 @@ class HomeView extends GetView<HomeController> {
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
         ),
         actions: [
-          Stack(
-            alignment: Alignment.topRight,
-            children: [
-              IconButton(
-                  onPressed: () => Get.toNamed("/booking-trip"),
-                  icon: const Icon(
-                    Icons.bookmark_outline_outlined,
-                    color: Colors.black,
-                  )),
-              Positioned(
-                  top: 5,
-                  right: 5,
-                  child: Text(
-                    controller.bookedTripList.length.toString(),
-                    style:
-                        const TextStyle(color: Colors.blueAccent, fontSize: 18),
-                  ))
-            ],
-          ),
-          Stack(
-            children: [
-              IconButton(
-                  onPressed: () => AuthController.instance.logout(),
-                  icon: const Icon(
-                    Icons.login_outlined,
-                    color: Colors.black,
-                  )),
-            ],
-          ),
+          IconButton(
+              onPressed: () => Get.toNamed("/booking-trip"),
+              icon: const Icon(
+                Icons.bookmark_outline_outlined,
+                color: Colors.black,
+              )),
+          IconButton(
+              onPressed: () => AuthController.instance.logout(),
+              icon: const Icon(
+                Icons.login_outlined,
+                color: Colors.black,
+              )),
         ],
       ),
       body: Container(
@@ -65,71 +48,16 @@ class HomeView extends GetView<HomeController> {
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
-              children: [
-                const SizedBox(
+              children: const [
+                SizedBox(
                   height: 20,
                 ),
-                TypeAheadFormField(
-                  textFieldConfiguration: TextFieldConfiguration(
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        hintText: "Search by destination or area",
-                        prefixIcon: Icon(
-                          Icons.search_outlined,
-                          color: Colors.blueAccent.shade400,
-                        ),
-                        hintStyle: const TextStyle(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.normal,
-                            fontFamily: 'Nunito',
-                            color: Colors.grey),
-                        border: const OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(6))),
-                        focusedBorder: const OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(6))),
-                      )),
-                  onSuggestionSelected: (suggestion) {},
-                  transitionBuilder: (context, suggestionsBox, controller) {
-                    return suggestionsBox;
-                  },
-                  itemBuilder: (context, item) {
-                    return Container(
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        children: [
-                          Text(
-                            item.toString(),
-                            style: const TextStyle(
-                                color: Colors.black, fontSize: 16),
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please select a city';
-                    } else {
-                      return null;
-                    }
-                  },
-                  suggestionsCallback: (String pattern) {
-                    return [];
-                  },
-                ),
-                const SizedBox(
+                DomesticTripWidget(),
+                SizedBox(
                   height: 20,
                 ),
-                const DomesticTripWidget(),
-                const SizedBox(
-                  height: 20,
-                ),
-                const AbroadTripWidget(),
-                const SizedBox(
+                AbroadTripWidget(),
+                SizedBox(
                   height: 20,
                 ),
               ],

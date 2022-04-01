@@ -20,26 +20,18 @@ class _DomesticTripWidgetState extends State<DomesticTripWidget> {
     final width = Get.width;
     final dateFormat = DateFormat('dd/MM/yyyy');
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Text(
-              "Domestic trips",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-            ),
-            Text(
-              "See All",
-              style: TextStyle(color: Colors.blueAccent, fontSize: 16),
-            )
-          ],
+        const Text(
+          "Domestic trips",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
         ),
         const SizedBox(
           height: 20,
         ),
         SizedBox(
           height: 300,
-          child: ListView.builder(
+          child: Obx(()=>ListView.builder(
               scrollDirection: Axis.horizontal,
               padding: EdgeInsets.zero,
               itemCount: controller.domesticTrips.length,
@@ -80,7 +72,7 @@ class _DomesticTripWidgetState extends State<DomesticTripWidget> {
                                       decoration: BoxDecoration(
                                           color: Colors.deepOrangeAccent,
                                           borderRadius:
-                                              BorderRadius.circular(50),
+                                          BorderRadius.circular(50),
                                           boxShadow: [
                                             BoxShadow(
                                               color: Colors.deepOrangeAccent
@@ -163,7 +155,7 @@ class _DomesticTripWidgetState extends State<DomesticTripWidget> {
                     ),
                   ),
                 );
-              }),
+              })),
         )
       ],
     );
